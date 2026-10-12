@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink antialiased;
+    font-size: 17px;
+    line-height: 1.55;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    @apply bg-marigold text-ink;
+  }
+  /* Visible, consistent keyboard focus everywhere */
+  :focus-visible {
+    outline: 3px solid #F5B82E;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1120px] px-5 sm:px-8;
+  }
+
+  .display {
+    @apply font-extrabold tracking-[-0.03em];
+    font-variation-settings: "opsz" 96, "wdth" 100;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[15px] font-semibold transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-white hover:bg-[#3d2b58];
+  }
+  .btn-marigold {
+    @apply btn bg-marigold text-ink hover:bg-marigold-deep;
+  }
+  .btn-ghost {
+    @apply btn border border-lilac-line bg-white text-ink hover:bg-lilac;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-lilac-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-mute focus:border-ink focus:outline-none focus:ring-0;
+  }
+  .field-error {
+    @apply border-rose;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+  .hint {
+    @apply mt-1.5 text-[13px] text-ink-mute;
+  }
+  .error-text {
+    @apply mt-1.5 text-[13px] font-medium text-rose;
+  }
+
+  /* A "shukriya note" — the one memorable object in the UI.
+     Marigold tape on top, slight tilt via --tilt. */
+  .note {
+    @apply relative rounded-note bg-white p-5 shadow-note;
+    transform: rotate(var(--tilt, 0deg));
+  }
+  .note::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 72px;
+    height: 20px;
+    margin-left: -36px;
+    background: #F5B82E;
+    opacity: 0.9;
+    border-radius: 2px;
+    transform: rotate(-2deg);
+  }
+}
