@@ -34,7 +34,7 @@ export default function CreatorPage({ creator, stats, recent, top, justPaid }) {
         )}
       </div>
 
-      <section className="container-x">
+      <section className="container-x mt-[10vh]">
         <div className="-mt-12 flex flex-col gap-5 sm:-mt-14 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex items-end gap-4">
             <Avatar src={creator.profilepic} name={name} size={104} className="shrink-0 ring-4 ring-white" />
